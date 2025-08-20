@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sentiment-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"            # Use nginx ingress controller
+    cert-manager.io/cluster-issuer: "letsencrypt"  # If cert-manager is used for TLS
+spec:
+  tls:
+  - hosts:
+    - yourdomain.example.com      # Replace with your domain or use nip.io for dev
+    secretName: sentiment-tls     # Secret for TLS cert
+  rules:
+  - host: yourdomain.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: sentiment-service
+            port:
+              number: 80
