@@ -1,2 +1,26 @@
+# Python & environment
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+
+# Terraform
 .terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
 *.terraform.lock.hcl
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+model.pkl
